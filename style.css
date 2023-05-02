@@ -12,6 +12,8 @@ h2{ font-size: 1.5em; }
 }
 .boxed2 {
   border: 1px solid white ;
+  position: relative ;
+  top: -10px ;
 }
 a{
 	text-decoration: none;
