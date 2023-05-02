@@ -8,7 +8,7 @@ h1, h2, h3, h4{
 h1{ font-size: 1.7em; }
 h2{ font-size: 1.5em; }
 .boxed {
-  border: 1px solid green ;
+  border: 1px solid white ;
 }
 a{
 	text-decoration: none;
