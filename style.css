@@ -10,6 +10,9 @@ h2{ font-size: 1.5em; }
 .boxed {
   border: 1px solid white ;
 }
+.boxed2 {
+  border: 1px solid white ;
+}
 a{
 	text-decoration: none;
 }
