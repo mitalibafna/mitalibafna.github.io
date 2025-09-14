@@ -13,7 +13,7 @@
 
     /* Top pane */
     .top-pane { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid var(--line); }
-    .top-pane .wrap { max-width: 980px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+    .top-pane .wrap { max-width: 980px; margin: 0 auto; padding: 10px 16px 10px 8px; display: flex; align-items: center; gap: 12px; }
     .brand { font-weight: 700; letter-spacing:.2px; }
     .spacer { flex: 1; }
     .nav { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -21,7 +21,7 @@
     .nav a:hover, .nav a:focus { background: #f3f4f6; outline: none; }
 
     /* Layout */
-    #page { max-width: 980px; margin: 24px auto; padding: 0 16px 48px; }
+    #page { max-width: 980px; margin: 24px auto; padding: 0 16px 48px 8px; }
     header#hero { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: center; }
     #photo { width: 220px; height: 220px; object-fit: cover; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,.08); }
     #logo h1 { margin: 0 0 6px 0; font-size: 28px; }
@@ -45,7 +45,7 @@
     .paper-link:hover, .paper-link:focus { text-decoration: underline; }
     .venue { color: var(--muted); }
     .award { color: #DD5E33; font-weight: 600; }
-    .note.recruit { color: #2e7d32; font-weight: 600; }
+    .note.recruit { color: #6B8E23; font-weight: 600; }
 
     @media (max-width: 640px) {
       header#hero { grid-template-columns: 1fr; }
@@ -78,7 +78,6 @@
     <header id="hero">
       <div class="boxed2"><img src="./a3.jpg" id="photo" alt="Photo of Mitali Bafna" /></div>
       <div id="logo">
-        <h1>Mitali Bafna</h1>
         <p>mitalibafna at gmail dot com</p>
         <p>mitalib at cs dot washington dot edu</p>
         <p>Gates Center 211</p>
