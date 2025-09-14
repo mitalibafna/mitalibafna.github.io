@@ -34,7 +34,7 @@
     #about .boxed p:first-child { margin-top: 12px; }
     section h2 { margin: 0 0 12px 0; font-size: 22px; }
     /* Prevent anchor from hiding under the sticky pane */
-    section, header#hero { scroll-margin-top: 48px; }
+    section, header#hero { scroll-margin-top: 96px; }
 
     /* Lists */
     ul.clean { list-style: none; padding-left: 0; margin: 0; }
@@ -56,7 +56,7 @@
     .skip:focus { position: static; width:auto; height:auto; padding:8px; background:#fff; border:1px solid var(--line); border-radius:8px; }
   </style>
 </head>
-<body>
+<body id="top">
   <a class="skip" href="#about">Skip to content</a>
 
   <!-- Top navigation pane -->
@@ -65,7 +65,7 @@
       <div class="brand">Mitali Bafna</div>
       <div class="spacer"></div>
       <nav class="nav">
-        <a href="#about">About</a>
+        <a href="#top">About</a>
         <a href="#publications">Publications</a>
         <a href="#teaching">Teaching</a>
         <a href="#service">Service</a>
@@ -216,7 +216,7 @@
     <section id="service" aria-labelledby="service-heading">
       <h2 id="service-heading">Service</h2>
       <ul class="clean">
-        <li>PC Member: STOC 2025</li>
+        <li><strong>PC Member:</strong> STOC 2025</li>
         <li>Co-organized HDX Workshop at STOC, 2025 (with Max Hopkins, Yotam Dikstein &amp; Dor Minzer)</li>
       </ul>
     </section>
