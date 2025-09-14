@@ -41,12 +41,41 @@
     ul.clean li { margin-block: 1.5px; line-height: 1.22; }
     #publications ul.clean { margin-block: 0; }
     #publications ul.clean li { margin-block: 1.5px; line-height: 1.22; }
-    #publications {position: relative;left: -19px; }
+    
     .paper-link { color: DarkViolet; text-decoration: none; }
     .paper-link:hover, .paper-link:focus { text-decoration: underline; }
     .venue { color: var(--muted); }
     .award { color: #DD5E33; font-weight: 600; }
     .note.recruit { color: #6B8E23; font-weight: 600; }
+
+    /* Sections */
+section { 
+  margin-top: 16px;  /* was 28px, reduced */
+}
+section h2 { 
+  margin: 0 0 6px 0; /* was 12px, reduced */
+}
+
+/* Lists */
+ul.clean { 
+  list-style: none; 
+  padding-left: 0; 
+  margin: 0; 
+}
+ul.clean li { 
+  margin-block: 2px;   /* tighter vertical spacing */
+  line-height: 1.15;   /* slightly tighter line height */
+}
+
+/* Publications list (same tightening) */
+#publications ul.clean { 
+  margin-block: 0; 
+}
+#publications ul.clean li { 
+  margin-block: 2px; 
+  line-height: 1.15; 
+}
+    #publications {position: relative;left: -19px; }
 
     @media (max-width: 640px) {
       header#hero { grid-template-columns: 1fr; }
