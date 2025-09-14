@@ -6,77 +6,93 @@
   <title>Mitali Bafna</title>
   <link rel="stylesheet" href="style.css" type="text/css" />
   <style>
-    /* Minimal styles for the top pane/nav and anchor behavior. */
-    :root { --ink:#111; --muted:#666; --accent:#5b21b6; --line:#e5e7eb; --bg:#ffffff; }
+    :root {
+      --ink:#111; --muted:#666; --accent:#5b21b6; --line:#e5e7eb; --bg:#ffffff;
+      --section-gap:16px;           /* inter-section spacing */
+      --h2-gap:6px;                 /* space under section headings */
+      --li-gap:6px;                 /* space between list items */
+    }
+
     html { scroll-behavior: smooth; }
-    body { margin:0; color:var(--ink); background:var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body {
+      margin:0; color:var(--ink); background:var(--bg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
 
     /* Top pane */
-    .top-pane { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid var(--line); }
-    .top-pane .wrap { max-width: 980px; margin: 0 auto; padding: 10px 16px 10px 8px; display: flex; align-items: center; gap: 12px; }
-    .brand { font-weight: 700; letter-spacing:.2px; }
-    .spacer { flex: 1; }
-    .nav { display: flex; gap: 14px; flex-wrap: wrap; }
-    .nav a { text-decoration: none; color: var(--ink); padding: 6px 8px; border-radius: 8px; }
-    .nav a:hover, .nav a:focus { background: #f3f4f6; outline: none; }
-
-    /* Layout */
-    #page { max-width: 980px; margin: 24px auto; padding: 0 16px 48px 8px; }
-    header#hero { display: grid; grid-template-columns: 286px 1fr; gap: 24px; align-items: center; }
-    #photo { width: 286px; height: 286px; object-fit: cover; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,.08); }
-    #logo h1 { margin: 0 0 6px 0; font-size: 28px; }
-    #logo p { margin: 0; color: var(--muted); }
-
-    section { margin-top: 28px; }
-    #about { margin-top: 6px; }
-    header#hero { margin-bottom: 6px; }
-    #about .boxed { margin-top: 0; }
-    #about .boxed p:first-child { margin-top: 12px; }
-    section h2 { margin: 0 0 12px 0; font-size: 22px; }
-    /* Prevent anchor from hiding under the sticky pane */
-    section, header#hero { scroll-margin-top: 48px; }
-
-    /* Lists */
-    ul.clean { list-style: none; padding-left: 0; margin: 0; }
-    
-    .paper-link { color: DarkViolet; text-decoration: none; }
-    .paper-link:hover, .paper-link:focus { text-decoration: underline; }
-    .venue { color: var(--muted); }
-    .award { color: #DD5E33; font-weight: 600; }
-    .note.recruit { color: #6B8E23; font-weight: 600; }
-
-    /* Sections */
-section { 
-  margin-top: 12px;  /* was 28px, reduced */
-}
-section h2 { 
-  margin: 0 0 6px 0; /* was 12px, reduced */
-}
-
-/* Sections */
-section { 
-  margin-top: 8px;   /* cut down a lot */
-}
-section h2 { 
-  margin: 0 0 6px 0; /* minimal space under heading */
-}
-
-/* Lists */
-ul.clean li {
-  margin: 10px;          /* remove vertical margin completely */
-  padding: 0;         /* avoid extra padding */
-  line-height: 1.0;  /* very tight line spacing */
-}
-
-    #publications {position: relative;left: -19px; }
-
-    @media (max-width: 640px) {
-      header#hero { grid-template-columns: 1fr; }
-      #photo { width: 208px; height: 208px; }
+    .top-pane {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--line);
     }
-    /* Optional: skip link for accessibility */
-    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus { position: static; width:auto; height:auto; padding:8px; background:#fff; border:1px solid var(--line); border-radius:8px; }
+    .top-pane .wrap {
+      max-width: 980px; margin: 0 auto; padding: 10px 16px 10px 8px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .brand { font-weight:700; letter-spacing:.2px; }
+    .spacer { flex:1; }
+    .nav { display:flex; gap:14px; flex-wrap:wrap; }
+    .nav a {
+      text-decoration:none; color:var(--ink);
+      padding:6px 8px; border-radius:8px;
+    }
+    .nav a:hover,.nav a:focus { background:#f3f4f6; outline:none; }
+
+    /* Page layout */
+    #page { max-width:980px; margin:24px auto; padding:0 16px 48px 8px; }
+
+    header#hero {
+      display:grid; grid-template-columns:286px 1fr; gap:24px; align-items:center;
+      margin-bottom:6px;            /* compact */
+      scroll-margin-top:48px;
+    }
+    #photo {
+      width:286px; height:286px; object-fit:cover; border-radius:14px;
+      box-shadow:0 2px 16px rgba(0,0,0,.08);
+    }
+    #logo h1 { margin:0 0 6px 0; font-size:28px; }
+    #logo p { margin:0; color:var(--muted); }
+
+    /* Sections: one rule controls inter-section spacing */
+    section { margin-top:0; scroll-margin-top:48px; }
+    section + section { margin-top: var(--section-gap); }
+    section h2 { margin:0 0 var(--h2-gap) 0; font-size:22px; }
+
+    /* Kill margin collapsing from lists; make item spacing tight and uniform */
+    ul.clean { list-style:none; padding-left:0; margin:0; }
+    ul.clean li {
+      margin:0 0 var(--li-gap) 0; padding:0; line-height:1.15;
+    }
+    ul.clean li:last-child { margin-bottom:0; }
+
+    /* Publications slight left shift (as requested earlier) */
+    #publications { position:relative; left:-19px; }
+
+    /* About tweaks */
+    #about { margin-top:6px; }
+    #about .boxed { margin-top:0; }
+    #about .boxed p:first-child { margin-top:12px; }
+    .note.recruit { color:#6B8E23; font-weight:600; }
+
+    .paper-link { color:DarkViolet; text-decoration:none; }
+    .paper-link:hover,.paper-link:focus { text-decoration:underline; }
+    .venue { color:var(--muted); }
+    .award { color:#DD5E33; font-weight:600; }
+
+    @media (max-width:640px){
+      header#hero { grid-template-columns:1fr; }
+      #photo { width:208px; height:208px; }
+    }
+
+    /* Accessible skip link */
+    .skip {
+      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip:focus {
+      position:static; width:auto; height:auto; padding:8px; background:#fff;
+      border:1px solid var(--line); border-radius:8px;
+    }
   </style>
 </head>
 <body id="top">
@@ -107,16 +123,22 @@ ul.clean li {
     </header>
 
     <section id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading" style="position: absolute; left: -9999px;">About</h2>
+      <h2 id="about-heading" style="position:absolute; left:-9999px;">About</h2>
       <div class="boxed">
         <p>
-          I am a theoretical computer scientist and an Assistant Professor in the Allen School of Computer Science &amp; Engineering at the University of Washington. My research explores complexity theory and algorithms and I am particularly interested in approximation algorithms, probabilistically checkable proofs, and high-dimensional expanders.
+          I am a theoretical computer scientist and an Assistant Professor in the Allen School of Computer Science &amp;
+          Engineering at the University of Washington. My research explores complexity theory and algorithms and I am
+          particularly interested in approximation algorithms, probabilistically checkable proofs, and high-dimensional
+          expanders.
         </p>
         <p>
-          I received my undergrad degree from IIT Madras and my Ph.D. in Computer Science from Harvard University in 2022, advised by Prof. Madhu Sudan. After that, I was a postdoc at CMU, hosted by Professors Aayush Jain and Pravesh Kothari, followed by a postdoc in the MIT Department of Mathematics.
+          I received my undergrad degree from IIT Madras and my Ph.D. in Computer Science from Harvard University in
+          2022, advised by Prof. Madhu Sudan. After that, I was a postdoc at CMU, hosted by Professors Aayush Jain and
+          Pravesh Kothari, followed by a postdoc in the MIT Department of Mathematics.
         </p>
         <p class="note recruit">
-          I will be recruiting Ph.D. students for the December 2025 application cycle. If you’re interested in working with me, please apply to the UW’s CS Ph.D. program and list my name on your application.
+          I will be recruiting Ph.D. students for the December 2025 application cycle. If you’re interested in working
+          with me, please apply to the UW’s CS Ph.D. program and list my name on your application.
         </p>
       </div>
     </section>
@@ -125,104 +147,122 @@ ul.clean li {
     <section id="publications" aria-labelledby="pubs-heading">
       <h2 id="pubs-heading">Publications</h2>
       <ul class="clean">
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2407.12762">Quasi-Linear Size PCPs with Small Soundness from HDX.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer and Nikhil Vyas (Appendix D by Zhiwei Yun)<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025 <span class="award">(Best Paper Award)</span>
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2405.10238">Rounding Large Independent Sets on Expanders.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Tim Hsieh and Pravesh Kothari<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2501.00337">Constant Degree Networks for Almost-Everywhere Reliable Transmission.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025
-</li>
-<li>
-  <a class="paper-link" href="https://dl.acm.org/doi/10.1145/3717823.3718257">Near Optimal Constant Inapproximability under ETH for Fundamental Problems in Parameterized Complexity.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Karthik C. S. and Dor Minzer<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2411.12438">Dimension Reduction via Sum-of-Squares and Improved Clustering Algorithms for Non-Spherical Mixtures.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Prashanti Anderson, Rares-Darius Buhai, Pravesh Kothari and David Steurer
-</li>
-<li>
-  <a class="paper-link" href="https://eccc.weizmann.ac.il/report/2024/020/">Constant Degree Direct Product Testers with Small Soundness.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Noam Lifshitz and Dor Minzer<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOCS 2024
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2308.09668">Characterizing Direct Product Testing via Coboundary Expansion.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2024
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2304.07284">Solving Unique Games over Globally Hypercontractive Graphs.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCC 2024
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2208.00122">Polynomial-Time Power-Sum Decomposition of Polynomials.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Tim Hsieh, Pravesh Kothari and Jeff Xu<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOCS 2022
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2111.09444">Hypercontractivity on High Dimensional Expanders: a Local-to-Global Approach for Higher Moments.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Max Hopkins, Tali Kaufman and Shachar Lovett<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2022
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2011.04658">High Dimensional Expanders: Eigenstripping, Pseudorandomness, and Unique Games.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Max Hopkins, Tali Kaufman and Shachar Lovett<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SODA 2022
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2006.09969">Playing Unique Games on Certified Small-Set Expanders.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Boaz Barak, Pravesh Kothari, Tselil Schramm and David Steurer<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2021
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/2106.13210">Optimal Fine-grained Hardness of Approximation of Linear Equations.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Nikhil Vyas<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ICALP 2021
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/1709.06036">Local decoding and testing of polynomials over grids.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Srikanth Srinivasan and Madhu Sudan<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random Structures and Algorithms (Journal)
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/1907.08185">Imperfect Gaps in Gap-ETH and PCPs.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Nikhil Vyas<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCC 2019
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/1808.08907">Communication-Rounds Tradeoffs for Common Randomness and Secret Key Generation.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Badih Ghazi, Noah Golowich and Madhu Sudan<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SODA 2019
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/1812.05013">Thwarting Adversarial Examples: An L_0-Robust Sparse Fourier Transform.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Jack Murtagh and Nikhil Vyas<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NeurIPS 2018
-</li>
-<li>
-  <a class="paper-link" href="https://arxiv.org/abs/1702.02970">The Price of Selection in Differential Privacy.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Jonathan Ullman<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COLT 2017
-</li>
-<li>
-  <a class="paper-link" href="https://eccc.weizmann.ac.il/report/2016/132/">On the Sensitivity Conjecture for Read-k Formulas.</a><br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Satyanarayana V. Lokam, Sébastien Tavenas and Ameya Velingker<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MFCS 2016
-</li>
-</ul>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2407.12762">Quasi-Linear Size PCPs with Small Soundness from HDX.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer and Nikhil Vyas (Appendix D by Zhiwei Yun)<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025 <span class="award">(Best Paper Award)</span>
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2405.10238">Rounding Large Independent Sets on Expanders.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Tim Hsieh and Pravesh Kothari<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2501.00337">Constant Degree Networks for Almost-Everywhere Reliable Transmission.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025
+        </li>
+        <li>
+          <a class="paper-link" href="https://dl.acm.org/doi/10.1145/3717823.3718257">Near Optimal Constant Inapproximability under ETH for Fundamental Problems in Parameterized Complexity.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Karthik C. S. and Dor Minzer<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2025
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2411.12438">Dimension Reduction via Sum-of-Squares and Improved Clustering Algorithms for Non-Spherical Mixtures.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Prashanti Anderson, Rares-Darius Buhai, Pravesh Kothari and David Steurer
+        </li>
+        <li>
+          <a class="paper-link" href="https://eccc.weizmann.ac.il/report/2024/020/">Constant Degree Direct Product Testers with Small Soundness.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Noam Lifshitz and Dor Minzer<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOCS 2024
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2308.09668">Characterizing Direct Product Testing via Coboundary Expansion.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2024
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2304.07284">Solving Unique Games over Globally Hypercontractive Graphs.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Dor Minzer<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCC 2024
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2208.00122">Polynomial-Time Power-Sum Decomposition of Polynomials.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Tim Hsieh, Pravesh Kothari and Jeff Xu<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOCS 2022
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2111.09444">Hypercontractivity on High Dimensional Expanders: a Local-to-Global Approach for Higher Moments.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Max Hopkins, Tali Kaufman and Shachar Lovett<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2022
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2011.04658">High Dimensional Expanders: Eigenstripping, Pseudorandomness, and Unique Games.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Max Hopkins, Tali Kaufman and Shachar Lovett<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SODA 2022
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2006.09969">Playing Unique Games on Certified Small-Set Expanders.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Boaz Barak, Pravesh Kothari, Tselil Schramm and David Steurer<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOC 2021
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/2106.13210">Optimal Fine-grained Hardness of Approximation of Linear Equations.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Nikhil Vyas<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ICALP 2021
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/1709.06036">Local decoding and testing of polynomials over grids.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Srikanth Srinivasan and Madhu Sudan<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random Structures and Algorithms (Journal)
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/1907.08185">Imperfect Gaps in Gap-ETH and PCPs.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Nikhil Vyas<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCC 2019
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/1808.08907">Thwarting Adversarial Examples: An L_0-Robust Sparse Fourier Transform.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Jack Murtagh and Nikhil Vyas<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NeurIPS 2018
+        </li>
+        <li>
+          <a class="paper-link" href="https://arxiv.org/abs/1702.02970">The Price of Selection in Differential Privacy.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Jonathan Ullman<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COLT 2017
+        </li>
+        <li>
+          <a class="paper-link" href="https://eccc.weizmann.ac.il/report/2016/132/">On the Sensitivity Conjecture for Read-k Formulas.</a><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with Satyanarayana V. Lokam, Sébastien Tavenas and Ameya Velingker<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MFCS 2016
+        </li>
+      </ul>
     </section>
 
-<section id="expositions" aria-labelledby="expositions-heading">
+    <!-- Teaching -->
+    <section id="teaching" aria-labelledby="teaching-heading">
+      <h2 id="teaching-heading">Teaching</h2>
+      <ul class="clean">
+        <li><strong>Fall 2025:</strong> CSE 431 - Undergrad Complexity Theory, UW</li>
+        <li><strong>Spring 2025:</strong> 18.200 - Principles of Discrete Math, MIT (Recitation Leader, Instructor: Peter Shor)</li>
+        <li><strong>Fall 2024:</strong> 18.424 - Undergraduate Seminar in Information Theory, MIT</li>
+        <li><strong>Spring 2024:</strong> 18.200 - Principles of Discrete Math, MIT (Recitation Leader, Instructors: Peter Shor &amp; Ankur Moitra)</li>
+        <li><strong>Fall 2023:</strong> 18.01 - Single Variable Calculus, MIT (Recitation Leader, Instructor: Prof. Larry Guth)</li>
+        <li><strong>Spring 2019:</strong> CS229r - Information Theory in Computer Science, Harvard (TA, Instructor: Prof. Madhu Sudan)</li>
+      </ul>
+    </section>
+
+    <!-- Service -->
+    <section id="service" aria-labelledby="service-heading">
+      <h2 id="service-heading">Service</h2>
+      <ul class="clean">
+        <li>PC Member: STOC 2025</li>
+        <li>Co-organized <a class="paper-link" href="https://sites.google.com/view/hdx-stoc2025/">HDX Workshop at STOC 2025</a> (with Max Hopkins, Yotam Dikstein &amp; Dor Minzer)</li>
+      </ul>
+    </section>
+
+    <!-- Expositions -->
+    <section id="expositions" aria-labelledby="expositions-heading">
       <h2 id="expositions-heading">Expositions</h2>
       <ul class="clean">
         <li>
@@ -235,31 +275,6 @@ ul.clean li {
         </li>
       </ul>
     </section>
-
-    
-    <!-- Teaching -->
-    <section id="teaching" aria-labelledby="teaching-heading">
-      <h2 id="teaching-heading">Teaching</h2>
-      <ul class="clean">
-<li><strong>Fall 2025:</strong> CSE 431 - Undergrad Complexity Theory, UW</li>
-<li><strong>Spring 2025:</strong> 18.200 - Principles of Discrete Math, MIT (Recitation Leader, Instructor: Peter Shor)</li>
-<li><strong>Fall 2024:</strong> 18.424 - Undergraduate Seminar in Information Theory, MIT</li>
-<li><strong>Spring 2024:</strong> 18.200 - Principles of Discrete Math, MIT (Recitation Leader, Instructors: Peter Shor &amp; Ankur Moitra)</li>
-<li><strong>Fall 2023:</strong> 18.01 - Single Variable Calculus, MIT (Recitation Leader, Instructor: Prof. Larry Guth)</li>
-<li><strong>Spring 2019:</strong> CS229r - Information Theory in Computer Science, Harvard (TA, Instructor: Prof. Madhu Sudan)</li>
-</ul>
-    </section>
-
-    <!-- Expositions -->
-    <section id="service" aria-labelledby="service-heading">
-      <h2 id="service-heading">Service</h2>
-      <ul class="clean">
-        <li>PC Member: STOC 2025</li>
-        <li>Co-organized <a class="paper-link" href="https://sites.google.com/view/hdx-stoc2025/">HDX Workshop at STOC 2025</a> (with Max Hopkins, Yotam Dikstein &amp; Dor Minzer)</li>
-      </ul>
-    </section>
-
-    
   </main>
 </body>
 </html>
