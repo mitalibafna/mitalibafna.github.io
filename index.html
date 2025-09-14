@@ -13,35 +13,34 @@
 
     /* Top pane */
     .top-pane { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid var(--line); }
-    .top-pane .wrap {$1gap: 9px; }
+    .top-pane .wrap { max-width: 980px; margin: 0 auto; padding: 10px 16px 10px 8px; display: flex; align-items: center; gap: 12px; }
     .brand { font-weight: 700; letter-spacing:.2px; }
     .spacer { flex: 1; }
-    .nav { display: flex; gap: 10px; flex-wrap: wrap; }
-    .nav a { text-decoration: none; color: var(--ink); padding: 5px 6px; border-radius: 8px; }
+    .nav { display: flex; gap: 14px; flex-wrap: wrap; }
+    .nav a { text-decoration: none; color: var(--ink); padding: 6px 8px; border-radius: 8px; }
     .nav a:hover, .nav a:focus { background: #f3f4f6; outline: none; }
 
     /* Layout */
-    #page { max-width: 980px; margin: 18px auto; padding: 0 12px 36px 4px; }
-    header#hero {$1gap: 18px; align-items: center; }
+    #page { max-width: 980px; margin: 24px auto; padding: 0 16px 48px 8px; }
+    header#hero { display: grid; grid-template-columns: 286px 1fr; gap: 24px; align-items: center; }
     #photo { width: 286px; height: 286px; object-fit: cover; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,.08); }
     #logo h1 { margin: 0 0 6px 0; font-size: 28px; }
     #logo p { margin: 0; color: var(--muted); }
 
-    section { margin-top: 21px; }
-    #about { margin-top: 4px; }
-    header#hero { margin-bottom: 4px; }
+    section { margin-top: 28px; }
+    #about { margin-top: 6px; }
+    header#hero { margin-bottom: 6px; }
     #about .boxed { margin-top: 0; }
-    #about .boxed p:first-child { margin-top: 9px; }
-    section h2 { margin: 0 0 9px 0; font-size: 22px; }
-    p { margin: 0.75em 0; }
+    #about .boxed p:first-child { margin-top: 12px; }
+    section h2 { margin: 0 0 12px 0; font-size: 22px; }
     /* Prevent anchor from hiding under the sticky pane */
     section, header#hero { scroll-margin-top: 48px; }
 
     /* Lists */
     ul.clean { list-style: none; padding-left: 0; margin: 0; }
-    ul.clean li { margin-block: 1px; line-height: 1.2; }
+    ul.clean li { margin-block: 1.5px; line-height: 1.22; }
     #publications ul.clean { margin-block: 0; }
-    #publications ul.clean li { margin-block: 1px; line-height: 1.2; }
+    #publications ul.clean li { margin-block: 1.5px; line-height: 1.22; }
     .paper-link { color: DarkViolet; text-decoration: none; }
     .paper-link:hover, .paper-link:focus { text-decoration: underline; }
     .venue { color: var(--muted); }
@@ -218,7 +217,7 @@
       <h2 id="service-heading">Service</h2>
       <ul class="clean">
         <li><strong>PC Member:</strong> STOC 2025</li>
-        <li>Co-organized <a class="paper-link" href="https://sites.google.com/view/hdx-stoc2025/" target="_blank" rel="noopener">HDX Workshop at STOC 2025</a> (with Max Hopkins, Yotam Dikstein &amp; Dor Minzer)</li>
+        <li>Co-organized <a class="paper-link" href="https://sites.google.com/view/hdx-stoc2025/">HDX Workshop at STOC 2025</a> (with Max Hopkins, Yotam Dikstein &amp; Dor Minzer)</li>
       </ul>
     </section>
 
