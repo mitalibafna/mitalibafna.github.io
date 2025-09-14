@@ -56,25 +56,26 @@ section h2 {
   margin: 0 0 6px 0; /* was 12px, reduced */
 }
 
-/* Lists */
-ul.clean { 
-  list-style: none; 
-  padding-left: 0; 
-  margin: 0; 
+/* Sections */
+section { 
+  margin-top: 8px;   /* cut down a lot */
 }
-ul.clean li { 
-  margin-block: 2px;   /* tighter vertical spacing */
-  line-height: 1.15;   /* slightly tighter line height */
+section h2 { 
+  margin: 0 0 4px 0; /* minimal space under heading */
 }
 
-/* Publications list (same tightening) */
-#publications ul.clean { 
-  margin-block: 0; 
+/* Lists */
+ul.clean li { 
+  margin-block: 0px; /* no extra margin between items */
+  line-height: 1.1;  /* tighter lines */
 }
-#publications ul.clean li { 
-  margin-block: 2px; 
-  line-height: 1.15; 
+
+/* Publications specifically */
+#publications ul.clean li {
+  margin-block: 0px;
+  line-height: 1.1;
 }
+
     #publications {position: relative;left: -19px; }
 
     @media (max-width: 640px) {
