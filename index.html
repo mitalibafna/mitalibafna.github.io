@@ -22,8 +22,8 @@
 
     /* Layout */
     #page { max-width: 980px; margin: 24px auto; padding: 0 16px 48px; }
-    header#hero { display: grid; grid-template-columns: 140px 1fr; gap: 20px; align-items: start; }
-    #photo { width: 140px; height: 140px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+    header#hero { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: center; }
+    #photo { width: 220px; height: 220px; object-fit: cover; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,.08); }
     #logo h1 { margin: 0 0 6px 0; font-size: 28px; }
     #logo p { margin: 0; color: var(--muted); }
 
@@ -35,6 +35,7 @@
     /* Lists */
     ul.clean { list-style: none; padding-left: 0; margin: 0; }
     ul.clean li { margin: 12px 0; }
+    section#publications ul.clean li { margin: 6px 0 8px; line-height: 1.35; }
     .paper-link { color: DarkViolet; text-decoration: none; }
     .paper-link:hover, .paper-link:focus { text-decoration: underline; }
     .venue { color: var(--muted); }
@@ -43,7 +44,7 @@
 
     @media (max-width: 640px) {
       header#hero { grid-template-columns: 1fr; }
-      #photo { width: 120px; height: 120px; }
+      #photo { width: 160px; height: 160px; }
     }
     /* Optional: skip link for accessibility */
     .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
@@ -197,14 +198,15 @@
     <section id="teaching" aria-labelledby="teaching-heading">
       <h2 id="teaching-heading">Teaching</h2>
       <ul class="clean">
-        <li><strong>18.424:</strong> Undergraduate Seminar in Information Theory, Fall 2024, MIT</li>
-        <li><strong>18.200:</strong> Principles of Discrete Applied Mathematics, Spring 2024, MIT<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recitation Leader. Instructors: Prof. Ankur Moitra and Prof. Peter Shor.</li>
-        <li><strong>18.01:</strong> Single Variable Calculus, Fall 2023, MIT<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recitation Leader. Instructor: Prof. Larry Guth.</li>
-        <li><a class="paper-link" href="http://people.seas.harvard.edu/~madhusudan/courses/Spring2019/">CS229r: Information Theory in Computer Science</a>, Spring 2019, Harvard<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graduate Teaching Fellow. Instructor: Prof. Madhu Sudan.</li>
-      </ul>
+<li><strong>CSE 431:</strong> Undergrad Complexity Theory, Fall 2025, UW</li>
+<li><strong>18.424:</strong> Undergraduate Seminar in Information Theory, Fall 2024, MIT</li>
+<li><strong>18.200:</strong> Principles of Discrete Applied Mathematics, Spring 2024 &amp; Spring 2025, MIT<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recitation Leader. Instructors: Prof. Ankur Moitra and Prof. Peter Shor.</li>
+<li><strong>18.01:</strong> Single Variable Calculus, Fall 2023, MIT<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recitation Leader. Instructor: Prof. Larry Guth.</li>
+<li><a class="paper-link" href="http://people.seas.harvard.edu/~madhusudan/courses/Spring2019/">CS229r: Information Theory in Computer Science</a>, Spring 2019, Harvard<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graduate Teaching Fellow. Instructor: Prof. Madhu Sudan.</li>
+</ul>
     </section>
 
     <!-- Expositions -->
